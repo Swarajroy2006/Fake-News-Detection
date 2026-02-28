@@ -5,10 +5,16 @@ const API_BASE_URL =
   process.env.REACT_APP_API_URL || "http://127.0.0.1:10000";
 
 function App() {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const [text, setText] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [backendOnline, setBackendOnline] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const checkBackend = () => {
@@ -49,6 +55,33 @@ function App() {
 
   return (
     <div className="app">
+      <header className="top-header">
+        <div className="profile-chip-wrap">
+          <h2 className="profile-name">Swaraj Roy</h2>
+          <span className="profile-badge">BCA '28</span>
+        </div>
+
+        <div className="header-actions">
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label="Toggle light and dark theme"
+          >
+            {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+          </button>
+
+          <a
+            href="https://github.com/Swarajroy2006"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-github"
+          >
+            GitHub
+          </a>
+        </div>
+      </header>
+
       <main className="panel">
         <div className="panel-header">
           <div>
