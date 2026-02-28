@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #0f2027, #000000);
+  color: #ffffff;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.glass-card {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin: 10px 0 20px;
+  color: #aaa;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.online {
+  background: #00ff9c;
+  box-shadow: 0 0 8px #00ff9c;
+}
+
+.offline {
+  background: #ff4c4c;
+  box-shadow: 0 0 8px #ff4c4c;
+}
+
+textarea {
+  width: 100%;
+  height: 170px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 15px;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #00ff9c;
+}
+
+button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  background: linear-gradient(135deg, #00ff9c, #00b3ff);
+  color: black;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.result.real {
+  background: rgba(0, 255, 156, 0.15);
+  border: 1px solid #00ff9c;
+}
+
+.result.fake {
+  background: rgba(255, 76, 76, 0.15);
+  border: 1px solid #ff4c4c;
+}
+
+.footer {
+  margin-top: 22px;
+  font-size: 13px;
+  color: #9aa0a6;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.divider {
+  opacity: 0.5;
+}
+
+.credit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ccefff;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  color: #ccefff;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.github-link:hover {
+  color: #00ff9c;
+  text-shadow: 0 0 6px #00ff9c;
+}
