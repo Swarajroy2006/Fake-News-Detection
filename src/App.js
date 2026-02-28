@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://127.0.0.1:10000";
+  process.env.REACT_APP_API_URL ||
+  (process.env.NODE_ENV === "development" ? "http://127.0.0.1:10000" : "/api");
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
