@@ -5,15 +5,39 @@
 :root {
   --bg-main: #090f1f;
   --bg-secondary: #0f1931;
+  --bg-grad-1: #18305f;
+  --bg-grad-2: #2d1b6a;
   --panel: rgba(13, 25, 49, 0.78);
   --panel-border: rgba(138, 175, 255, 0.25);
   --text-primary: #f3f7ff;
   --text-secondary: #aebddb;
+  --top-header-bg: rgba(7, 13, 29, 0.75);
+  --top-header-border: rgba(138, 175, 255, 0.18);
+  --chip-bg: rgba(110, 142, 255, 0.18);
+  --chip-text: #d8e5ff;
   --accent: #5ec8ff;
   --accent-strong: #3f8cff;
   --accent-soft: rgba(94, 200, 255, 0.2);
   --success: #3be6a7;
   --danger: #ff6f8f;
+}
+
+[data-theme="light"] {
+  --bg-main: #edf3ff;
+  --bg-secondary: #dfe9ff;
+  --bg-grad-1: #d8e7ff;
+  --bg-grad-2: #c6dcff;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-border: rgba(90, 122, 188, 0.22);
+  --text-primary: #1c2d49;
+  --text-secondary: #47608f;
+  --top-header-bg: rgba(255, 255, 255, 0.85);
+  --top-header-border: rgba(90, 122, 188, 0.2);
+  --chip-bg: rgba(63, 140, 255, 0.12);
+  --chip-text: #3a5f9f;
+  --accent: #3f8cff;
+  --accent-strong: #326cd1;
+  --accent-soft: rgba(63, 140, 255, 0.16);
 }
 
 body {
@@ -22,8 +46,8 @@ body {
   font-family: "Inter", "Segoe UI", sans-serif;
   color: var(--text-primary);
   background:
-    radial-gradient(circle at 15% 12%, #18305f 0%, transparent 45%),
-    radial-gradient(circle at 85% 0%, #2d1b6a 0%, transparent 35%),
+    radial-gradient(circle at 15% 12%, var(--bg-grad-1) 0%, transparent 45%),
+    radial-gradient(circle at 85% 0%, var(--bg-grad-2) 0%, transparent 35%),
     linear-gradient(160deg, var(--bg-main), var(--bg-secondary));
 }
 
@@ -35,6 +59,99 @@ body {
   justify-content: center;
   padding: 32px 18px 20px;
   gap: 16px;
+}
+
+.top-header {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--top-header-border);
+  background: var(--top-header-bg);
+  box-shadow: 0 10px 30px rgba(8, 16, 34, 0.24);
+}
+
+.profile-chip-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.profile-badge {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--chip-text);
+  background: var(--chip-bg);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle {
+  border: 1px solid var(--panel-border);
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--bg-main) 55%, transparent);
+  color: var(--text-primary);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--panel-border));
+  transform: translateY(-1px);
+}
+
+.theme-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.header-github {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: color-mix(in srgb, var(--bg-main) 40%, transparent);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.header-github:hover {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+.github-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .panel {
@@ -118,7 +235,7 @@ h1 {
 .composer label {
   display: block;
   margin-bottom: 12px;
-  color: #d2def6;
+  color: color-mix(in srgb, var(--text-primary) 86%, white 14%);
   font-size: 14px;
   font-weight: 600;
 }
@@ -128,8 +245,8 @@ textarea {
   min-height: 185px;
   padding: 16px;
   border-radius: 14px;
-  background: rgba(8, 15, 30, 0.75);
-  border: 1px solid rgba(174, 189, 219, 0.24);
+  background: color-mix(in srgb, var(--bg-main) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-secondary) 36%, transparent);
   color: var(--text-primary);
   font-size: 15px;
   line-height: 1.5;
@@ -152,7 +269,7 @@ textarea::placeholder {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: #93a8d2;
+  color: var(--text-secondary);
 }
 
 .analyze-btn {
@@ -160,11 +277,11 @@ textarea::placeholder {
   margin-top: 20px;
   padding: 13px;
   border-radius: 12px;
-  border: 1px solid rgba(149, 213, 255, 0.25);
+  border: 1px solid color-mix(in srgb, var(--accent) 36%, transparent);
   font-size: 16px;
   font-weight: 600;
-  color: #041528;
-  background: linear-gradient(120deg, #72deff, #588fff 55%, #6778ff);
+  color: #08172c;
+  background: linear-gradient(120deg, #72deff, var(--accent) 55%, #6778ff);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   box-shadow: 0 10px 24px rgba(63, 140, 255, 0.32);
@@ -183,7 +300,7 @@ textarea::placeholder {
 
 .hint {
   margin: 10px 0 0;
-  color: #ffc0d0;
+  color: color-mix(in srgb, var(--danger) 75%, var(--text-primary));
   font-size: 13px;
 }
 
@@ -192,7 +309,7 @@ textarea::placeholder {
   padding: 16px 18px;
   border-radius: 14px;
   border: 1px solid;
-  background: rgba(11, 21, 38, 0.75);
+  background: color-mix(in srgb, var(--bg-main) 78%, transparent);
 }
 
 .result-label {
@@ -200,7 +317,7 @@ textarea::placeholder {
   font-size: 12px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
-  color: #9cb0d7;
+  color: var(--text-secondary);
 }
 
 .result-card h2 {
@@ -210,7 +327,7 @@ textarea::placeholder {
 
 .confidence {
   margin: 0;
-  color: #d2dff8;
+  color: color-mix(in srgb, var(--text-primary) 88%, white 12%);
 }
 
 .result-card.real {
@@ -234,7 +351,7 @@ textarea::placeholder {
 .footer {
   margin-top: 4px;
   font-size: 13px;
-  color: #95a7ca;
+  color: var(--text-secondary);
   display: flex;
   gap: 8px;
   align-items: center;
@@ -252,13 +369,13 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #cfe0ff;
+  color: color-mix(in srgb, var(--text-primary) 90%, white 10%);
 }
 
 .github-link {
   display: inline-flex;
   align-items: center;
-  color: #cfe0ff;
+  color: color-mix(in srgb, var(--text-primary) 90%, white 10%);
   transition: color 0.2s ease;
 }
 
@@ -267,6 +384,15 @@ textarea::placeholder {
 }
 
 @media (max-width: 760px) {
+  .top-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
   .panel {
     padding: 22px;
   }
@@ -293,6 +419,25 @@ textarea::placeholder {
   .panel {
     border-radius: 18px;
     padding: 18px;
+  }
+
+  .profile-name {
+    font-size: 20px;
+  }
+
+  .profile-badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .theme-toggle {
+    width: 52px;
+    height: 52px;
+  }
+
+  .header-github {
+    width: 42px;
+    height: 42px;
   }
 
   textarea {
