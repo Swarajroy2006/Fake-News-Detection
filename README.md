@@ -143,6 +143,41 @@ This improves reliability and user awareness.
 
 ---
 
+## ▲ Deploy on Vercel
+
+This repository is pre-configured for Vercel deployment:
+
+- React frontend is served as a static app
+- Flask API runs as a serverless function at `/api`
+- Frontend automatically uses local API in development and `/api` in production
+
+### 1) Push code to GitHub
+
+```bash
+git add .
+git commit -m "Configure Vercel deployment"
+git push origin main
+```
+
+### 2) Import project in Vercel
+
+1. Open Vercel Dashboard
+2. Click **Add New Project**
+3. Import `Swarajroy2006/Fake-News-Detection`
+4. Keep default settings and deploy
+
+### 3) Optional environment variable
+
+If you ever want to use an external backend, set:
+
+```bash
+REACT_APP_API_URL=https://your-backend-url
+```
+
+Otherwise, no env variable is required for full-stack Vercel deployment.
+
+---
+
 ## 📸 Screenshots
 ![Home UI](https://github.com/Swarajroy2006/Fake-News-Detection/blob/main/Screenshorts/home.png)
 ![Fake Result](https://github.com/Swarajroy2006/Fake-News-Detection/blob/main/Screenshorts/fake.png)
